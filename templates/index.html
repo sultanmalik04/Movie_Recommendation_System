@@ -1,0 +1,43 @@
+{% extends 'layout.html' %}
+
+
+{% block title %}
+    Home
+{% endblock %}
+
+
+{% block body %}
+    <div class="col-md-6 mb-4 pt-5">
+    
+        <!-- Search form -->
+        <form class="form-inline text-center" method="POST" action="/">
+            <div class="input-group">
+                <input type="search" class="form-control rounded" name="movie_title" placeholder="enter title"
+                    aria-label="Search" aria-describedby="search-addon" />
+                <button type="button" class="btn btn-outline-primary ml-2">Recommend</button>
+            </div>
+        </form>
+    
+    </div>
+    
+    
+    <div class="container mt-5">
+    
+        {% if movies != [] %}
+        <h4>Movies you might like...</h4>
+        {% else %}
+        <h4 class="text-center">No movie to recommend :(</h4>
+        {% endif %}
+    
+        {% for movie in movies %}
+        <div>
+            <div class="card m-2">
+                <div class="row card-body">
+                    <h5 class="card-title col-md-10">{{ movie }}</h5>
+                    <a href="{{ url_for('details', movie_title=movie) }}" class="btn btn-primary">Details</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+{% endblock %}

@@ -1,0 +1,4 @@
+.vscode
+Pipfile
+Pipfile.lock
+read_csv.py
